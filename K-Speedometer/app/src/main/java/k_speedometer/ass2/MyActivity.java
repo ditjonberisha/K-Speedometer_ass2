@@ -2,7 +2,6 @@ package k_speedometer.ass2;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.location.Location;
@@ -20,7 +19,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     Speedometer speedometer;
     ImageButton imgButton ;
-    boolean isOn = false;
+    boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
 
     @Override
@@ -83,17 +82,18 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     }
 
-
+     //Camera Flash Light Code
     public void flashLightOn(View view) {
 
         try {
+            //check if there is a Camera Flash
             if (getPackageManager().hasSystemFeature(
                     PackageManager.FEATURE_CAMERA_FLASH)) {
-                cam = Camera.open();
+                cam = Camera.open();//open camera access
                 Camera.Parameters p = cam.getParameters();
-                p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//get torch
                 cam.setParameters(p);
-                cam.startPreview();
+                cam.startPreview();//start torch
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,7 +107,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             if (getPackageManager().hasSystemFeature(
                     PackageManager.FEATURE_CAMERA_FLASH)) {
                 cam.stopPreview();
-                cam.release();
+                cam.release();//Stop camera flash light
                 cam = null;
             }
         } catch (Exception e) {
@@ -120,17 +120,18 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     @Override
     public void onClick(View view) {
-        if(!isOn)
+        if(!isFlashOn)//check if flash is Off
         {
-            flashLightOn(view);
-            isOn = true;
-            imgButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));
+            flashLightOn(view);//turn it on
+            isFlashOn = true;//set variable true for On
+            imgButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));//change image button image background
         }
         else{
             flashLightOff(view);
-            isOn = false;
+            isFlashOn = false;
             imgButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
         }
 
     }
+    //end Camera Flash Light
 }
