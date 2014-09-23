@@ -7,5 +7,6 @@
         <attr name="offColor" format="color"></attr>
         <attr name="scaleColor" format="color"></attr>
         <attr name="scaleTextSize" format="dimension"></attr>
+        <attr name="blue" format="color"></attr>
     </declare-styleable>
 </resources>

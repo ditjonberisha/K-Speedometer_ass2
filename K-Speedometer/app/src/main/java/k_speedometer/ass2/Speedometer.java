@@ -27,6 +27,8 @@ public class Speedometer extends View implements SpeedChangeListener {
     private Paint offMarkPaint;
     private Paint scalePaint;
     private Paint readingPaint;
+    private Paint BluePaint;
+    private Path BluePath;
     private Path onPath;
     private Path offPath;
     final RectF oval = new RectF();
@@ -40,6 +42,8 @@ public class Speedometer extends View implements SpeedChangeListener {
     private int SCALE_COLOR = Color.argb(255, 255, 255, 255);
     // Madhesia e numrave
     private float SCALE_SIZE = 18;
+
+    private int Blue = Color.argb(255,0,0,240);
 
     // Scale configuration
     private float centerX;
@@ -58,6 +62,7 @@ public class Speedometer extends View implements SpeedChangeListener {
             OFF_COLOR = a.getColor(R.styleable.Speedometer_offColor, OFF_COLOR);
             SCALE_COLOR = a.getColor(R.styleable.Speedometer_scaleColor, SCALE_COLOR);
             SCALE_SIZE = a.getDimension(R.styleable.Speedometer_scaleTextSize, SCALE_SIZE);
+            Blue = a.getColor(R.styleable.Speedometer_blue, Blue);
         } finally{
             a.recycle();
         }
@@ -86,8 +91,14 @@ public class Speedometer extends View implements SpeedChangeListener {
         readingPaint.setTypeface(Typeface.SANS_SERIF);
         readingPaint.setColor(Color.WHITE);
 
+        BluePaint = new Paint(readingPaint);
+        BluePaint.setStyle(Paint.Style.STROKE);
+        BluePaint.setColor(Blue);
+        BluePaint.setStrokeWidth(15);
+
         onPath = new Path();
         offPath = new Path();
+        BluePath = new Path();
     }
 
     public float getCurrentSpeed() {
@@ -128,7 +139,9 @@ public class Speedometer extends View implements SpeedChangeListener {
         int chosenDimension = Math.min(chosenWidth, chosenHeight);
         centerX = chosenDimension / 2;
         centerY = chosenDimension / 2;
-        setMeasuredDimension(chosenDimension, chosenDimension);
+        double b= chosenDimension * 0.70;
+        int a=(int) b;
+        setMeasuredDimension(chosenDimension, a);
     }
 
     private int chooseDimension(int mode, int size) {
@@ -145,6 +158,7 @@ public class Speedometer extends View implements SpeedChangeListener {
         drawScale(canvas);
         drawLegend(canvas);
         drawReading(canvas);
+        drawbluecircle(canvas);
     }
 
     /**
@@ -166,6 +180,15 @@ public class Speedometer extends View implements SpeedChangeListener {
             onPath.addArc(oval, i, 2);
         }
         canvas.drawPath(onPath, onMarkPaint);
+    }
+
+    private void drawbluecircle(Canvas canvas){
+
+        BluePath.reset();
+        for(int i = -180; i <= 0; i+=1){
+            BluePath.addCircle(centerX, centerY-20, radius-70, Path.Direction.CW);
+        }
+        canvas.drawPath(BluePath, BluePaint);
     }
 
     private void drawLegend(Canvas canvas){
@@ -205,4 +228,3 @@ public class Speedometer extends View implements SpeedChangeListener {
         this.invalidate();
     }
 }
-
