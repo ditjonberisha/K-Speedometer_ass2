@@ -139,9 +139,7 @@ public class Speedometer extends View implements SpeedChangeListener {
         int chosenDimension = Math.min(chosenWidth, chosenHeight);
         centerX = chosenDimension / 2;
         centerY = chosenDimension / 2;
-        double b= chosenDimension * 0.70;
-        int a=(int) b;
-        setMeasuredDimension(chosenDimension, a);
+        setMeasuredDimension(chosenDimension, (int) (chosenDimension * 0.70));
     }
 
     private int chooseDimension(int mode, int size) {
@@ -166,7 +164,7 @@ public class Speedometer extends View implements SpeedChangeListener {
      * canvas
      */
     private void drawScaleBackground(Canvas canvas){
-        //canvas.drawARGB(255, 0, 0, 0);
+        canvas.drawARGB(255, 0, 0, 0);
         offPath.reset();
         for(int i = -180; i <= 0; i+=3){
             offPath.addArc(oval, i, 2);
