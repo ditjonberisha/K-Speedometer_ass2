@@ -2,12 +2,14 @@ package k_speedometer.ass2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +20,7 @@ import android.widget.Toast;
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener{
 
     Speedometer speedometer;
-    ImageButton imgButton ;
+    ImageButton imgLight, imgCamera;
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
 
@@ -28,11 +30,13 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         setContentView(R.layout.activity_my);
 
         speedometer = (Speedometer) findViewById(R.id.Speedometer);
-        imgButton = (ImageButton) findViewById(R.id.imgbtn);
+        imgLight = (ImageButton) findViewById(R.id.imgLight);
+        imgCamera = (ImageButton) findViewById(R.id.imgStartCamera);
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         this.onLocationChanged(null);
-        imgButton.setOnClickListener(this);
+        imgLight.setOnClickListener(this);
+        imgCamera.setOnClickListener(this);
     }
 
 
@@ -120,18 +124,23 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     @Override
     public void onClick(View view) {
-        if(!isFlashOn)//check if flash is Off
-        {
-            flashLightOn(view);//turn it on
-            isFlashOn = true;//set variable true for On
-            imgButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));//change image button image background
-        }
-        else{
-            flashLightOff(view);
-            isFlashOn = false;
-            imgButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
-        }
+        switch (view.getId()) {
 
+            case R.id.imgLight:
+            if (!isFlashOn)//check if flash is Off
+            {
+                flashLightOn(view);//turn it on
+                isFlashOn = true;//set variable true for On
+                imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));//change image button image background
+            } else {
+                flashLightOff(view);
+                isFlashOn = false;
+                imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
+            }break;
+            //end Camera Flash Light
+            case R.id.imgStartCamera:
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Get camera for capture
+                startActivity(i);//start activity (camera)
+        }
     }
-    //end Camera Flash Light
 }
