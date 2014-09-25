@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +29,8 @@ import android.widget.Toast;
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener, SensorEventListener {
 
     Speedometer speedometer;
-    ImageButton imgLight, imgCamera;
+    private ImageButton imgLight, imgCamera;
+    private Button btnHistory;
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
     private ImageView compass;
@@ -37,6 +39,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     // device sensor manager
     private SensorManager mSensorManager;
     TextView txtGrade;
+    SQLite objSQL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         speedometer = (Speedometer) findViewById(R.id.Speedometer);
         imgLight = (ImageButton) findViewById(R.id.imgLight);
         imgCamera = (ImageButton) findViewById(R.id.imgStartCamera);
+        btnHistory = (Button) findViewById(R.id.btnTopSpeed);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -58,6 +62,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
         imgCamera.setOnClickListener(this);
+        btnHistory.setOnClickListener(this);
     }
 
 
@@ -161,7 +166,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             //end Camera Flash Light
             case R.id.imgStartCamera:
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Get camera for capture
-                startActivity(i);//start activity (camera)
+                startActivity(i);break;//start activity (camera)
+            case R.id.btnTopSpeed:
+                Intent i1 = new Intent("android.intent.action.viewHistory");
+                startActivity(i1);
         }
     }
 

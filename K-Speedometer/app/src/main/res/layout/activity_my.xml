@@ -23,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_light_off"
-        android:layout_below="@+id/Speedometer"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/imgStartCamera"
+        android:layout_alignStart="@+id/imgStartCamera" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -72,6 +72,18 @@
         android:textSize="30sp"
         android:layout_alignRight="@+id/imageViewCompass"
         android:layout_alignEnd="@+id/imageViewCompass" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top Speed"
+        android:id="@+id/btnTopSpeed"
+        android:layout_toRightOf="@+id/textViewGrade"
+        android:layout_toEndOf="@+id/textViewGrade"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
