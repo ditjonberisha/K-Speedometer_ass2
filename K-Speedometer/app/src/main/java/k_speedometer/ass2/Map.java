@@ -1,6 +1,10 @@
 package k_speedometer.ass2;
 
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -16,7 +20,7 @@ import com.google.android.gms.maps.MapFragment;
 import org.w3c.dom.Text;
 
 
-public class Map extends Activity implements View.OnClickListener {
+public class Map extends Activity implements LocationListener, View.OnClickListener {
 
     private GoogleMap map;
     private Button bStartStop;
@@ -29,6 +33,7 @@ public class Map extends Activity implements View.OnClickListener {
     private Handler handler = new Handler();
 
     int secs, mins, hrs;
+    float currentspeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +46,14 @@ public class Map extends Activity implements View.OnClickListener {
         bStartStop.setText("Start");
         tvSpeedTime = (TextView) findViewById(R.id.tvSpeedTime);
 
-        speed = "0 km/h";
+        currentspeed = 0;
+        speed = currentspeed + " km/h";
         time = "00:00:00";
         tvSpeedTime.setText("Speed : " + speed + "\n\nTime : " + time);
+
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        this.onLocationChanged(null);
 
         bStartStop.setOnClickListener(this);
     }
@@ -61,6 +71,8 @@ public class Map extends Activity implements View.OnClickListener {
                     bStartStop.setText("Start");
                     secs = mins = hrs = 0;
                     time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
+                    currentspeed = 0;
+                    speed = currentspeed + " km/h";
                     tvSpeedTime.setText("Speed : " + speed + "\n\nTime : " + time);
                     handler.removeCallbacks(updateTimer);
                 }
@@ -83,4 +95,28 @@ public class Map extends Activity implements View.OnClickListener {
             handler.postDelayed(this, 0);
         }
     };
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if(location != null && bStartStop.getText().toString() == "Stop") {
+            currentspeed = location.getSpeed() * 36 / 10;
+            speed = currentspeed + " km/h";
+            time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
 }

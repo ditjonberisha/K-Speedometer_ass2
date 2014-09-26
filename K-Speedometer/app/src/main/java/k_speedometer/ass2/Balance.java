@@ -72,7 +72,7 @@ public class Balance extends Activity implements SensorEventListener {
                 canvas.drawRGB(255, 255, 255);
 
                 canvas.drawBitmap(Ball, centerX + sensorX * nrPixels, centerY + sensorY * nrPixels, null);
-                canvas.drawBitmap(gPlus, (canvas.getWidth() / 2) - (gPlus.getWidth() / 4), (canvas.getHeight() / 2) - (gPlus.getHeight() / 2), null);
+                canvas.drawBitmap(gPlus, (canvas.getWidth() / 2) - (gPlus.getWidth() / 2), (canvas.getHeight() / 2) - (gPlus.getHeight() / 2), null);
 
                 ourHolder.unlockCanvasAndPost(canvas);
             }
