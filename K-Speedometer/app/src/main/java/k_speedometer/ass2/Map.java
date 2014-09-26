@@ -115,7 +115,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     public void onLocationChanged(Location location) {
         if (location != null && bStartStop.getText().toString() == "Stop") {
             currentspeed = location.getSpeed() * 36 / 10;
-            CompareSpeed(currentspeed);
+            CompareSpeed((int)currentspeed);
             speed = currentspeed + " km/h";
             time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
         }
@@ -136,7 +136,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     }
 
-    private void CompareSpeed(float speed) {
+    private void CompareSpeed(int speed) {
         if (speed > maxSpeed) {
             maxSpeed = speed;
         }

@@ -10,6 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -41,8 +42,11 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     private float currentDegree = 0f;
     // device sensor manager
     private SensorManager mSensorManager;
-    TextView txtGrade;
+    TextView txtGrade, tvLat, tvLong;
     SQLite objSQL;
+    String provider;
+    LocationManager lm;
+    Location l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +60,33 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         imgMap = (ImageButton) findViewById(R.id.imgMap);
         imgBalance = (ImageButton) findViewById(R.id.imgBalance);
         StartCamera = (ImageButton) findViewById(R.id.imgCamera);
+        tvLat = (TextView) findViewById(R.id.textViewlat);
+        tvLong = (TextView) findViewById(R.id.textViewlong);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        Criteria c=new Criteria();
+
+        provider=lm.getBestProvider(c, false);
+
+        l=lm.getLastKnownLocation(provider);
+        if(l!=null)
+        {
+            //get latitude and longitude of the location
+            double lng=l.getLongitude();
+            double lat=l.getLatitude();
+
+            //display on text view
+            tvLong.setText(""+lng);
+            tvLat.setText(""+lat);
+        }
+        else
+        {
+            tvLong.setText("n/a");
+            tvLat.setText("n/a");
+        }
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
@@ -90,6 +118,12 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     @Override
     public void onLocationChanged(Location location) {
+
+        double lng=l.getLongitude();
+        double lat=l.getLatitude();
+        tvLong.setText(""+lng);
+        tvLat.setText(""+lat);
+
         if(location == null){
             speedometer.onSpeedChanged(0);
         }

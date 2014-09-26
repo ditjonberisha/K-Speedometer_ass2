@@ -127,5 +127,31 @@
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/balance" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n/a"
+        android:gravity="right"
+        android:id="@+id/textViewlat"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_toRightOf="@+id/imgMap"
+        android:layout_toEndOf="@+id/imgMap"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="n/a"
+        android:gravity="right"
+        android:id="@+id/textViewlong"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/textViewlat"
+        android:layout_alignStart="@+id/textViewlat"
+        android:textColor="#ffffff" />
+
 
 </RelativeLayout>
