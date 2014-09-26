@@ -93,7 +93,7 @@ public class Balance extends Activity implements SensorEventListener {
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
-        Ball = BitmapFactory.decodeResource(getResources(), R.drawable.blackball);
+        Ball = BitmapFactory.decodeResource(getResources(), R.drawable.redball);
         gPlus = BitmapFactory.decodeResource(getResources(), R.drawable.plus);
         sensorX = sensorY = 0;
 
@@ -124,9 +124,9 @@ public class Balance extends Activity implements SensorEventListener {
         sensorY = sensorEvent.values[1];
 
         if (checkBalance()) {
-            Ball = BitmapFactory.decodeResource(getResources(), R.drawable.blueball);
+            Ball = BitmapFactory.decodeResource(getResources(), R.drawable.greenball);
         } else {
-            Ball = BitmapFactory.decodeResource(getResources(), R.drawable.blackball);
+            Ball = BitmapFactory.decodeResource(getResources(), R.drawable.redball);
         }
     }
 
