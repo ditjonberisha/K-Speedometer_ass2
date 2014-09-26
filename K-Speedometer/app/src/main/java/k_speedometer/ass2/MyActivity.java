@@ -1,6 +1,7 @@
 package k_speedometer.ass2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -93,6 +94,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
         imgBalance.setOnClickListener(this);
+        imgMap.setOnClickListener(this);
         StartCamera.setOnClickListener(this);
     }
 
@@ -121,6 +123,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
         if(location == null){
             speedometer.onSpeedChanged(0);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("No GPS found!");
+            alert.setPositiveButton("OK", null);
+            alert.show();
         }
         else {
             double lng=location.getLongitude();
@@ -211,6 +217,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
                 //start activity to get a result
                 startActivity(i);
                 break;
+            case R.id.imgMap:
+                Intent i1 = new Intent("android.intent.action.MAP");
+                startActivity(i1);
+                break;
 
         }
     }
@@ -257,10 +267,5 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-    }
-
-    public void map(View view){
-        Intent intent = new Intent(this, Map.class);
-        startActivity(intent);
     }
 }
