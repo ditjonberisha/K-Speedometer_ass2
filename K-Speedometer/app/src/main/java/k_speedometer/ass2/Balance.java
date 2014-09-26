@@ -114,12 +114,6 @@ public class Balance extends Activity implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        try {
-            Thread.sleep(75);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         sensorX = sensorEvent.values[0];
         sensorY = sensorEvent.values[1];
 
@@ -145,7 +139,6 @@ public class Balance extends Activity implements SensorEventListener {
     @Override
     protected void onResume() {
         super.onResume();
-
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         ourSurfaceHolder.resume();
     }
