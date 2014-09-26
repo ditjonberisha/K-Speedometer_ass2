@@ -26,7 +26,9 @@ public class SQLite {
     private final Context myContext;
     private SQLiteDatabase myDatabase;
 
-    public SQLite(Context c){myContext = c;}
+    public SQLite(Context c) {
+        myContext = c;
+    }
 
 
     private static class DbHelper extends SQLiteOpenHelper {
@@ -50,6 +52,7 @@ public class SQLite {
             onCreate(db);
         }
     }
+
     public SQLite Open() throws SQLDataException {
 
         myHelper = new DbHelper(myContext);
@@ -61,26 +64,41 @@ public class SQLite {
         myHelper.close();
     }
 
-    public  long InsertData(String date,String speed) throws SQLException{
+    public long InsertData(String date, String speed) throws SQLException {
 
         ContentValues cv = new ContentValues();
-        cv.put(KEY_DATE,date);
-        cv.put(KEY_MAXSPEED,speed);
+        cv.put(KEY_DATE, date);
+        cv.put(KEY_MAXSPEED, speed);
 
-        return myDatabase.insert(TBL_NAME,null,cv);
+        return myDatabase.insert(TBL_NAME, null, cv);
     }
-    public String getAll(){
+
+    public String getAll() {
 
         String data = "";
-        String[] coulums = new String[]{KEY_ROWID,KEY_DATE,KEY_MAXSPEED};
-        Cursor c = myDatabase.query(TBL_NAME,coulums,null,null,null,null,null);
+        String[] columns = new String[]{KEY_ROWID, KEY_DATE, KEY_MAXSPEED};
+        Cursor c = myDatabase.query(TBL_NAME, columns, null, null, null, null, null);
         int iDate = c.getColumnIndex(KEY_DATE);
         int iSpeed = c.getColumnIndex(KEY_MAXSPEED);
+        if (c != null) {
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                data += "\n" + c.getString(iDate) + "   " + c.getString(iSpeed);
+            }
 
-        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
-            data += "\n" + c.getString(iDate) + "   " + c.getString(iSpeed);
         }
-        return  data;
+        return data;
+    }
+
+    public String getSpeed(String date) {
+        String result = null;
+        String[] columns = new String[]{KEY_ROWID, KEY_DATE, KEY_MAXSPEED};
+        Cursor c = myDatabase.query(TBL_NAME, columns, KEY_DATE+"=?", new String[]{date}, null, null, null);
+
+        int iSpeed = c.getColumnIndex(KEY_MAXSPEED);
+        if (c != null) {
+            result = c.getString(iSpeed);
+        }
+        return result;
     }
 
     public void Delete() {
