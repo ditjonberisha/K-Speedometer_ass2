@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -29,8 +30,8 @@ import android.widget.Toast;
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener, SensorEventListener {
 
     Speedometer speedometer;
-    private ImageButton imgLight, imgCamera;
-    private Button btnHistory;
+    private ImageButton imgLight;
+    private Button btnMap;
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
     private ImageView compass;
@@ -46,13 +47,11 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-
         compass = (ImageView) findViewById(R.id.imageViewCompass);
         txtGrade = (TextView) findViewById(R.id.textViewGrade);
         speedometer = (Speedometer) findViewById(R.id.Speedometer);
         imgLight = (ImageButton) findViewById(R.id.imgLight);
-        imgCamera = (ImageButton) findViewById(R.id.imgStartCamera);
-        btnHistory = (Button) findViewById(R.id.btnTopSpeed);
+        btnMap = (Button) findViewById(R.id.btnmap);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -61,8 +60,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
-        imgCamera.setOnClickListener(this);
-        btnHistory.setOnClickListener(this);
     }
 
 
@@ -164,12 +161,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
                 imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
             }break;
             //end Camera Flash Light
-            case R.id.imgStartCamera:
-                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Get camera for capture
-                startActivity(i);break;//start activity (camera)
-            case R.id.btnTopSpeed:
-                Intent i1 = new Intent("android.intent.action.viewHistory");
-                startActivity(i1);
         }
     }
 
@@ -215,5 +206,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void map(View view){
+        Intent intent = new Intent(this, Map.class);
+        startActivity(intent);
     }
 }
