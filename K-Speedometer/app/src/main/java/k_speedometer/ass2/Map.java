@@ -4,14 +4,20 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+
+import org.w3c.dom.Text;
 
 
 public class Map extends Activity {
 
     private GoogleMap map;
+    private Button bStartStop;
+    private TextView tvSpeedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,8 @@ public class Map extends Activity {
 
         map=((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         map.setMyLocationEnabled(true);
+        bStartStop = (Button) findViewById(R.id.bStartStop);
+        tvSpeedTime = (TextView) findViewById(R.id.tvSpeedTime);
     }
 
 
