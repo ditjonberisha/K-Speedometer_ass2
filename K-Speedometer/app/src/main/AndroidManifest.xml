@@ -39,6 +39,10 @@
             android:name=".Map"
             android:label="@string/title_activity_map" >
         </activity>
+        <activity
+            android:name=".Balance"
+            android:label="@string/title_activity_balance" >
+        </activity>
     </application>
 
 </manifest>
