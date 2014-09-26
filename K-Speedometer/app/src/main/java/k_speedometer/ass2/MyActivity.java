@@ -45,8 +45,8 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     TextView txtGrade, tvLat, tvLong;
     SQLite objSQL;
     String provider;
-    LocationManager lm;
-    Location l;
+    LocationManager locationM;
+    Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,17 +66,17 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
-        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationM = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         Criteria c=new Criteria();
 
-        provider=lm.getBestProvider(c, false);
+        provider=locationM.getBestProvider(c, false);
 
-        l=lm.getLastKnownLocation(provider);
-        if(l!=null)
+        location=locationM.getLastKnownLocation(provider);
+        if(location!=null)
         {
             //get latitude and longitude of the location
-            double lng=l.getLongitude();
-            double lat=l.getLatitude();
+            double lng=location.getLongitude();
+            double lat=location.getLatitude();
 
             //display on text view
             tvLong.setText(""+lng);
@@ -119,15 +119,15 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     @Override
     public void onLocationChanged(Location location) {
 
-        double lng=l.getLongitude();
-        double lat=l.getLatitude();
-        tvLong.setText(""+lng);
-        tvLat.setText(""+lat);
-
         if(location == null){
             speedometer.onSpeedChanged(0);
         }
         else {
+            double lng=location.getLongitude();
+            double lat=location.getLatitude();
+            tvLong.setText(""+lng);
+            tvLat.setText(""+lat);
+
             float currentspeed = location.getSpeed() * 36/10;
 
             speedometer.onSpeedChanged(currentspeed);
