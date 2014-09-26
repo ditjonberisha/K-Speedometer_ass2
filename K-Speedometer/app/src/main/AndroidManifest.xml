@@ -42,6 +42,10 @@
         <activity
             android:name=".Balance"
             android:label="@string/title_activity_balance" >
+            <intent-filter>
+                <action android:name="android.intent.action.BALANCE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
