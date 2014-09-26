@@ -14,9 +14,10 @@ import android.view.View;
 /**
  * Created by Ditjon on 9/23/2014.
  */
+// https://github.com/bilthon/Android-Speedometer/blob/master/src/com/luminiasoft/labs/views/Speedometer.java
 public class Speedometer extends View implements SpeedChangeListener {
 
-    public static final float DEFAULT_MAX_SPEED = 220; // Assuming this is km/h and you drive a super-car
+    public static final float DEFAULT_MAX_SPEED = 220;
 
     // Speedometer internal state
     private float mMaxSpeed;

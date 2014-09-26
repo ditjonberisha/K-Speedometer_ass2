@@ -1,12 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MyActivity"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="#ff000000">
 
     <view
@@ -22,33 +17,30 @@
         android:id="@+id/imgLight"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:background="@drawable/ic_light_off"
         android:maxHeight="70dp"
-        android:maxWidth="70dp" />
+        android:maxWidth="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="190dp"
         android:layout_height="190dp"
         android:id="@+id/imageViewCompass"
-        android:layout_below="@+id/Speedometer"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/compass" />
+        android:src="@drawable/compass"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/Speedometer"
+        android:layout_toEndOf="@+id/Speedometer" />
 
     <ImageView
         android:layout_width="190dp"
         android:layout_height="190dp"
         android:id="@+id/imageViewCompass1"
-        android:layout_below="@+id/Speedometer"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:src="@drawable/compass1"
-        android:layout_alignBottom="@+id/imageViewCompass"
-        android:layout_alignRight="@+id/imageViewCompass"
-        android:layout_alignEnd="@+id/imageViewCompass" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/Speedometer"
+        android:layout_toEndOf="@+id/Speedometer" />
 
     <TextView
         android:layout_width="80dp"
@@ -58,20 +50,21 @@
         android:id="@+id/textViewGrade"
         android:textColor="#ffffff"
         android:textSize="25sp"
-        android:layout_below="@+id/Speedometer"
-        android:layout_toRightOf="@+id/imageViewCompass"
-        android:layout_toEndOf="@+id/imageViewCompass" />
+        android:layout_toEndOf="@+id/imageViewCompass"
+        android:layout_below="@+id/imgLight"
+        android:layout_toRightOf="@+id/imageViewCompass" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lat:"
         android:id="@+id/textView"
-        android:layout_below="@+id/textViewGrade"
-        android:layout_alignLeft="@+id/textViewGrade"
-        android:layout_alignStart="@+id/textViewGrade"
         android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_toStartOf="@+id/textViewlat"
+        android:layout_below="@+id/imageViewCompass"
+        android:layout_toRightOf="@+id/Speedometer"
+        android:layout_toEndOf="@+id/Speedometer" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,16 +81,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
+        android:src="@drawable/bottom"
+        android:layout_toStartOf="@+id/textViewGrade"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/bottom"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/imageViewCompass" />
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_width="120dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:id="@+id/imgCamera"
         android:layout_alignParentBottom="true"
@@ -107,26 +100,26 @@
         android:background="@drawable/camera" />
 
     <ImageButton
-        android:layout_width="120dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:id="@+id/imgMap"
+        android:layout_toEndOf="@+id/imgCamera"
+        android:background="@drawable/map"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/imgCamera"
-        android:layout_toEndOf="@+id/imgCamera"
-        android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/map"/>
+        android:layout_alignTop="@+id/imageView" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgBalance"
+        android:layout_toEndOf="@+id/imgMap"
+        android:background="@drawable/balance"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/imgMap"
-        android:layout_toEndOf="@+id/imgMap"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/balance" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -134,14 +127,13 @@
         android:text="n/a"
         android:gravity="right"
         android:id="@+id/textViewlat"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_toRightOf="@+id/imgMap"
         android:layout_toEndOf="@+id/imgMap"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        android:maxLength="10" />
+        android:maxLength="10"
+        android:layout_below="@+id/imageViewCompass"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -157,6 +149,5 @@
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:maxLength="10" />
-
 
 </RelativeLayout>
