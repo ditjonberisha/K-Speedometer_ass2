@@ -29,14 +29,6 @@
         android:maxHeight="70dp"
         android:maxWidth="70dp" />
 
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:id="@+id/imgStartCamera"
-        android:layout_below="@+id/Speedometer"
-        android:layout_toRightOf="@+id/imgLight"
-        android:layout_toEndOf="@+id/imgLight" />
-
     <ImageView
         android:layout_width="190dp"
         android:layout_height="190dp"
