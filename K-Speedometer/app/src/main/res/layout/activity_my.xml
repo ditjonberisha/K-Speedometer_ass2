@@ -58,35 +58,74 @@
         android:id="@+id/textViewGrade"
         android:textColor="#ffffff"
         android:textSize="25sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="53dp" />
+        android:layout_below="@+id/Speedometer"
+        android:layout_toRightOf="@+id/imageViewCompass"
+        android:layout_toEndOf="@+id/imageViewCompass" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to map"
-        android:id="@+id/btnmap"
+        android:text="Lat:"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textViewGrade"
+        android:layout_alignLeft="@+id/textViewGrade"
+        android:layout_alignStart="@+id/textViewGrade"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Long:"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:textColor="#ffffff" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/Speedometer"
-        android:layout_alignEnd="@+id/Speedometer"
-        android:textColor="#ffffff"
+        android:src="@drawable/bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/imageViewCompass" />
+
+    <ImageButton
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgCamera"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/imageView"
+        android:background="@drawable/camera" />
+
+    <ImageButton
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgMap"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imgCamera"
+        android:layout_toEndOf="@+id/imgCamera"
+        android:layout_alignTop="@+id/imageView"
+        android:background="@drawable/map"
         android:onClick="map" />
 
     <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="160dp"
-        android:id="@+id/ibBalance"
-        android:layout_below="@+id/textViewGrade"
-        android:layout_toRightOf="@+id/imageViewCompass"
-        android:layout_toEndOf="@+id/imageViewCompass"
-        android:background="@drawable/balance"
-        android:layout_alignBottom="@+id/imageViewCompass"
-        android:layout_alignRight="@+id/Speedometer"
-        android:layout_alignEnd="@+id/Speedometer" />
+        android:layout_height="wrap_content"
+        android:id="@+id/imgBalance"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imgMap"
+        android:layout_toEndOf="@+id/imgMap"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageView"
+        android:background="@drawable/balance" />
 
 
 </RelativeLayout>

@@ -31,8 +31,8 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
     Speedometer speedometer;
     private ImageButton imgLight;
-    ImageButton ibBalance;
-    private Button btnMap;
+    private ImageButton imgBalance;
+    private ImageButton imgMap;
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
     private ImageView compass;
@@ -52,8 +52,8 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         txtGrade = (TextView) findViewById(R.id.textViewGrade);
         speedometer = (Speedometer) findViewById(R.id.Speedometer);
         imgLight = (ImageButton) findViewById(R.id.imgLight);
-        btnMap = (Button) findViewById(R.id.btnmap);
-        ibBalance = (ImageButton) findViewById(R.id.ibBalance);
+        imgMap = (ImageButton) findViewById(R.id.imgMap);
+        imgBalance = (ImageButton) findViewById(R.id.imgBalance);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -62,7 +62,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
-        ibBalance.setOnClickListener(this);
+        imgBalance.setOnClickListener(this);
     }
 
 
@@ -164,7 +164,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
                 imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
             }break;
             //end Camera Flash Light
-            case R.id.ibBalance:
+            case R.id.imgBalance:
                 Intent i = new Intent("android.intent.action.BALANCE");
                 startActivity(i);
                 break;
