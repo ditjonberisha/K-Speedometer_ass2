@@ -80,26 +80,17 @@ public class SQLite {
         Cursor c = myDatabase.query(TBL_NAME, columns, null, null, null, null, null);
         int iDate = c.getColumnIndex(KEY_DATE);
         int iSpeed = c.getColumnIndex(KEY_MAXSPEED);
+        int i = 0;
         if (c != null) {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-                data += "\n" + c.getString(iDate) + "   " + c.getString(iSpeed);
+                i++;
+                data += "\n" + i+".  " + c.getString(iDate) + "                  " + c.getString(iSpeed);
             }
 
         }
         return data;
     }
 
-    public String getSpeed(String date) {
-        String result = null;
-        String[] columns = new String[]{KEY_ROWID, KEY_DATE, KEY_MAXSPEED};
-        Cursor c = myDatabase.query(TBL_NAME, columns, KEY_DATE+"=?", new String[]{date}, null, null, null);
-
-        int iSpeed = c.getColumnIndex(KEY_MAXSPEED);
-        if (c != null) {
-            result = c.getString(iSpeed);
-        }
-        return result;
-    }
 
     public void Delete() {
         myDatabase.execSQL("DROP TABLE " + TBL_NAME);

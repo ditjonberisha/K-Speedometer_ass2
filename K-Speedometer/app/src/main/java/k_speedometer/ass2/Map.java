@@ -1,7 +1,10 @@
 package k_speedometer.ass2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -19,13 +22,19 @@ import com.google.android.gms.maps.MapFragment;
 
 import org.w3c.dom.Text;
 
+import java.sql.SQLDataException;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Map extends Activity implements LocationListener, View.OnClickListener {
 
     private GoogleMap map;
-    private Button bStartStop;
-    private TextView tvSpeedTime;
-    private String speed, time;
+    private Button bStartStop,btnViewHistory;
+    private TextView tvSpeedTime, dialogMessage;
+    private String speed, time,timeToStore;
+    SQLite objSql;
 
     private long startTime = 0L;
     long timeMSec = 0L;
@@ -33,7 +42,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     private Handler handler = new Handler();
 
     int secs, mins, hrs;
-    float currentspeed;
+    float currentspeed, maxSpeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +54,9 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         bStartStop = (Button) findViewById(R.id.bStartStop);
         bStartStop.setText("Start");
         tvSpeedTime = (TextView) findViewById(R.id.tvSpeedTime);
-
+        btnViewHistory = (Button) findViewById(R.id.btnHistory);
         currentspeed = 0;
+        maxSpeed = 0;
         speed = currentspeed + " km/h";
         time = "00:00:00";
         tvSpeedTime.setText("Speed : " + speed + "\n\nTime : " + time);
@@ -56,6 +66,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         this.onLocationChanged(null);
 
         bStartStop.setOnClickListener(this);
+        btnViewHistory.setOnClickListener(this);
     }
 
     @Override
@@ -64,10 +75,10 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
             case R.id.bStartStop:
                 if (bStartStop.getText().toString() == "Start") {
                     bStartStop.setText("Stop");
-
                     startTime = SystemClock.uptimeMillis();
                     handler.postDelayed(updateTimer, 0);
                 } else {
+                    timeToStore = time;
                     bStartStop.setText("Start");
                     secs = mins = hrs = 0;
                     time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
@@ -75,8 +86,12 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
                     speed = currentspeed + " km/h";
                     tvSpeedTime.setText("Speed : " + speed + "\n\nTime : " + time);
                     handler.removeCallbacks(updateTimer);
+                    RegisterInData();
                 }
                 break;
+            case R.id.btnHistory:
+                Intent i = new Intent("android.intent.action.viewHistory");
+                startActivity(i);
         }
     }
 
@@ -98,8 +113,9 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     @Override
     public void onLocationChanged(Location location) {
-        if(location != null && bStartStop.getText().toString() == "Stop") {
+        if (location != null && bStartStop.getText().toString() == "Stop") {
             currentspeed = location.getSpeed() * 36 / 10;
+            CompareSpeed(currentspeed);
             speed = currentspeed + " km/h";
             time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
         }
@@ -119,4 +135,37 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     public void onProviderDisabled(String s) {
 
     }
+
+    private void CompareSpeed(float speed) {
+        if (speed > maxSpeed) {
+            maxSpeed = speed;
+        }
+    }
+
+    public void RegisterInData() {
+
+        objSql = new SQLite(this);
+        try {
+            objSql.Open();
+            String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+            String SpeedToInsert = String.valueOf(maxSpeed);
+            objSql.InsertData(date, SpeedToInsert);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Info!");
+            alert.setMessage("Max. speed: "+maxSpeed+"km/h\nTime: "+timeToStore+"\nData registered in history!");
+            alert.setPositiveButton("OK", null);
+            alert.show();
+        } catch (SQLException e) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Error!");
+            alert.setMessage("Failed to inser data!");
+            alert.setPositiveButton("OK", null);
+            alert.show();
+        }finally {
+            objSql.Close();
+        }
+
+
+    }
+
 }

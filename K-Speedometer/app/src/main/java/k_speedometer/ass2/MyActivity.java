@@ -33,6 +33,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     private ImageButton imgLight;
     private ImageButton imgBalance;
     private ImageButton imgMap;
+    private ImageButton StartCamera;
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
     private ImageView compass;
@@ -54,6 +55,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         imgLight = (ImageButton) findViewById(R.id.imgLight);
         imgMap = (ImageButton) findViewById(R.id.imgMap);
         imgBalance = (ImageButton) findViewById(R.id.imgBalance);
+        StartCamera = (ImageButton) findViewById(R.id.imgCamera);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -63,6 +65,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
         imgBalance.setOnClickListener(this);
+        StartCamera.setOnClickListener(this);
     }
 
 
@@ -168,6 +171,13 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
                 Intent i = new Intent("android.intent.action.BALANCE");
                 startActivity(i);
                 break;
+            case R.id.imgCamera:
+                //start camera to take a picture
+                i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //start activity to get a result
+                startActivity(i);
+                break;
+
         }
     }
 
