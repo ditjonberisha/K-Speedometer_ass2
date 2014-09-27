@@ -22,6 +22,7 @@
     <string name="data_registred_info">Data registered in history!</string>
     <string name="error_info">Error!</string>
     <string name="data_failed">Failed to insert data!</string>
+    <string name="time_to_DB">Time</string>
 
 
 </resources>

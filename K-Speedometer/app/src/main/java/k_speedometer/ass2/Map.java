@@ -64,7 +64,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         maxSpeed = 0;
         speed = currentspeed + " km/h";
         time = "00:00:00";
-        tvSpeedTime.setText(speed_txt + " " + speed + "\n\n" + time_txt + " " + time);
+        tvSpeedTime.setText(speed_txt + " " + speed + "\n" + time_txt + " " + time);
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
@@ -92,7 +92,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
                     time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
                     currentspeed = 0;
                     speed = currentspeed + " km/h";
-                    tvSpeedTime.setText(speed_txt + " " + speed + "\n\n" + time_txt + " " + time);
+                    tvSpeedTime.setText(speed_txt + " " + speed + "\n" + time_txt + " " + time);
                     handler.removeCallbacks(updateTimer);
                     RegisterInData();
                 }
@@ -115,7 +115,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
             hrs = secs / 3600;
             secs = secs % 60;
             time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
-            tvSpeedTime.setText(speed_txt + " " + speed + "\n\n" + time_txt + " " + time);
+            tvSpeedTime.setText(speed_txt + " " + speed + "\n" + time_txt + " " + time);
             handler.postDelayed(this, 0);
         }
     };
@@ -163,7 +163,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             if (maxSpeed != 0) {
                 String SpeedToInsert = String.valueOf(maxSpeed);
-                objSql.InsertData(date, SpeedToInsert);
+                objSql.InsertData(date, SpeedToInsert,time);
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore + "\n" + done);
             }else{
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore);

@@ -17,6 +17,7 @@ public class  SQLite {
     public static String KEY_ROWID = "_id";
     public static String KEY_DATE = "_date";
     public static String KEY_MAXSPEED = "_maxSpeed";
+    public static String KEY_TIME = "_time";
 
     private static final String DB_NAME = "History";
     private static final String TBL_NAME = "MaxSpeed";
@@ -41,7 +42,7 @@ public class  SQLite {
         public void onCreate(SQLiteDatabase db) {
 
             db.execSQL("CREATE TABLE " + TBL_NAME + " (" + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    KEY_DATE + " TEXT NOT NULL, " + KEY_MAXSPEED + " TEXT NOT NULL);");
+                    KEY_DATE + " TEXT NOT NULL, " + KEY_MAXSPEED + " TEXT NOT NULL, "+ KEY_TIME + " TEXT NOT NULL);");
 
         }
 
@@ -64,11 +65,12 @@ public class  SQLite {
         myHelper.close();
     }
 
-    public long InsertData(String date, String speed) throws SQLException {
+    public long InsertData(String date, String speed,String time) throws SQLException {
 
         ContentValues cv = new ContentValues();
         cv.put(KEY_DATE, date);
         cv.put(KEY_MAXSPEED, speed);
+        cv.put(KEY_TIME, time);
 
         return myDatabase.insert(TBL_NAME, null, cv);
     }
@@ -76,15 +78,17 @@ public class  SQLite {
     public String getAll() {
 
         String data = "";
-        String[] columns = new String[]{KEY_ROWID, KEY_DATE, KEY_MAXSPEED};
+        String[] columns = new String[]{KEY_ROWID, KEY_DATE, KEY_MAXSPEED,KEY_TIME};
         Cursor c = myDatabase.query(TBL_NAME, columns, null, null, null, null, null);
         int iDate = c.getColumnIndex(KEY_DATE);
         int iSpeed = c.getColumnIndex(KEY_MAXSPEED);
+        int iTime = c.getColumnIndex(KEY_TIME);
         int i = 0;
         if (c != null) {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 i++;
-                data += "\n" + i+".  " + c.getString(iDate) + "                  " + c.getString(iSpeed);
+                data += "\n" + i+".  " + c.getString(iDate) + "                  " + c.getString(iSpeed)+
+                         "          "+ c.getString(iTime);
             }
 
         }
