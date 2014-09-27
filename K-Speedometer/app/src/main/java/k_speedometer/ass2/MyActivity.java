@@ -11,7 +11,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -27,6 +29,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener, SensorEventListener {
@@ -39,15 +44,18 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     boolean isFlashOn = false;//to check if light is on or off.
     public static Camera cam = null;
     private ImageView compass;
-    // record the compass picture angle turned
-    private float currentDegree = 0f;
-    // device sensor manager
+    private float currentDegree = 0f; // record the compass picture angle turned
     private SensorManager mSensorManager;
-    TextView txtGrade, tvLat, tvLong;
-    String provider;
-    LocationManager locationM;
-    Location location;
-    String gps,LightOn,LightOff;
+    private TextView txtGrade;
+    private TextView tvLat;
+    private TextView tvLong;
+    private TextView tvCity;
+    private LocationManager locationM;
+    private Location location;
+    private String provider;
+    private String gps;
+    private String LightOn;
+    private String LightOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +71,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         StartCamera = (ImageButton) findViewById(R.id.imgCamera);
         tvLat = (TextView) findViewById(R.id.textViewlat);
         tvLong = (TextView) findViewById(R.id.textViewlong);
+        tvCity = (TextView) findViewById(R.id.textViewCity);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -78,15 +87,22 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             //get latitude and longitude of the location
             double lng=location.getLongitude();
             double lat=location.getLatitude();
-
             //display on text view
             tvLong.setText(""+lng);
             tvLat.setText(""+lat);
+
         }
         else
         {
             tvLong.setText("n/a");
             tvLat.setText("n/a");
+
+            gps = getResources().getString(R.string.no_gps);
+            speedometer.onSpeedChanged(0);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle(gps);
+            alert.setPositiveButton("OK", null);
+            alert.show();
         }
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -96,9 +112,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         imgBalance.setOnClickListener(this);
         imgMap.setOnClickListener(this);
         StartCamera.setOnClickListener(this);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -122,22 +136,27 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     @Override
     public void onLocationChanged(Location location) {
 
-        if(location == null){
-            gps = getResources().getString(R.string.no_gps);
-            speedometer.onSpeedChanged(0);
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle(gps);
-            alert.setPositiveButton("OK", null);
-            alert.show();
-        }
-        else {
+        if(location != null){
+
             double lng=location.getLongitude();
             double lat=location.getLatitude();
             tvLong.setText(""+lng);
             tvLat.setText(""+lat);
 
-            float currentspeed = location.getSpeed() * 36/10;
+            try {
+                // get name of the city
+                Geocoder gcd = new Geocoder(this, Locale.getDefault());
+                List<Address> addresses = null;
+                addresses = gcd.getFromLocation(lat, lng, 1);
+                if (addresses.size() > 0) {
+                    tvCity.setText(addresses.get(0).getLocality());
+                } else
+                    tvCity.setText("City not found");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
+            float currentspeed = location.getSpeed() * 36/10;
             speedometer.onSpeedChanged(currentspeed);
         }
     }
@@ -225,7 +244,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
                 Intent i1 = new Intent("android.intent.action.MAP");
                 startActivity(i1);
                 break;
-
         }
     }
 

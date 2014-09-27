@@ -127,11 +127,13 @@
         android:gravity="right"
         android:id="@+id/textViewlat"
         android:layout_toEndOf="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:maxLength="10"
         android:layout_alignBottom="@+id/Speedometer"
         android:layout_toStartOf="@+id/imgBalance"
+        android:layout_toLeftOf="@+id/imgBalance"
         android:layout_alignRight="@+id/imageViewCompass"
         android:layout_alignEnd="@+id/imageViewCompass" />
 
@@ -149,5 +151,15 @@
         android:layout_toEndOf="@+id/textView2"
         android:layout_alignRight="@+id/textViewlat"
         android:layout_alignEnd="@+id/textViewlat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewCity"
+        android:layout_alignBottom="@+id/imageViewCompass"
+        android:layout_toRightOf="@+id/imageViewCompass"
+        android:layout_toEndOf="@+id/imageViewCompass"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
 
 </RelativeLayout>
