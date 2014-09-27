@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 
 import java.sql.SQLDataException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -125,7 +126,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         if (location != null && bStartStop.getText().toString().equals("Stop")) {
             currentspeed = location.getSpeed() * 36 / 10;
             CompareSpeed((int) currentspeed);
-            speed = currentspeed + " km/h";
+            speed = new DecimalFormat("#0.00").format(currentspeed) + " km/h";
             time = String.format("%02d", hrs) + ":" + String.format("%02d", mins) + ":" + String.format("%02d", secs);
         }
     }
@@ -163,7 +164,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             if (maxSpeed != 0) {
                 String SpeedToInsert = String.valueOf(maxSpeed);
-                objSql.InsertData(date, SpeedToInsert,time);
+                objSql.InsertData(date, SpeedToInsert,timeToStore);
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore + "\n" + done);
             }else{
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore);

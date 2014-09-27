@@ -88,7 +88,7 @@ public class  SQLite {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 i++;
                 data += "\n" + i+".  " + c.getString(iDate) + "                  " + c.getString(iSpeed)+
-                         "          "+ c.getString(iTime);
+                        "  km/h                  "+ c.getString(iTime);
             }
 
         }

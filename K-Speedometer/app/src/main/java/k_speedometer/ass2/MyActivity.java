@@ -158,6 +158,9 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
 
             float currentspeed = location.getSpeed() * 36/10;
             speedometer.onSpeedChanged(currentspeed);
+        }else{
+            tvLong.setText("n/a");
+            tvLat.setText("n/a");
         }
     }
 
