@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="app_name">K-Speedometer</string>
+    <string name="action_settings">Konfigurimet</string>
     <string name="Speed_time_info">Shpejtesia dhe koha</string>
     <string name="btnClearHistory">Fshije historine</string>
     <string name="btnHistory">Shiko historine</string>

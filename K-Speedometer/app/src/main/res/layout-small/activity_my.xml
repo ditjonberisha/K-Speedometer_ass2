@@ -92,7 +92,7 @@
         android:layout_below="@+id/imageViewCompass" />
 
     <ImageButton
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/imgCamera"
         android:layout_alignParentBottom="true"
@@ -102,7 +102,7 @@
         android:background="@drawable/camera" />
 
     <ImageButton
-        android:layout_width="220dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/imgMap"
         android:layout_alignParentBottom="true"
@@ -136,7 +136,7 @@
         android:layout_alignParentEnd="true"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        android:maxLength="10" />
+        android:maxLength="5" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -151,6 +151,6 @@
         android:layout_alignStart="@+id/textViewlat"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        android:maxLength="10" />
+        android:maxLength="5" />
 
 </RelativeLayout>
