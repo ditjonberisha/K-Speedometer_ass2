@@ -60,7 +60,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lat:"
+        android:text="@string/lat_info"
         android:id="@+id/textView"
         android:layout_below="@+id/textViewGrade"
         android:layout_alignLeft="@+id/textViewGrade"
@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Long:"
+        android:text="@string/long_info"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"

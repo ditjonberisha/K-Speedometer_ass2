@@ -57,11 +57,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lat:"
+        android:text="@string/lat_info"
         android:id="@+id/textView"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:layout_toStartOf="@+id/textViewlat"
+        android:layout_toLeftOf="@+id/textViewlat"
         android:layout_below="@+id/imageViewCompass"
         android:layout_toRightOf="@+id/Speedometer"
         android:layout_toEndOf="@+id/Speedometer" />
@@ -69,7 +70,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Long:"
+        android:text="@string/long_info"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
@@ -83,6 +84,7 @@
         android:id="@+id/imageView"
         android:src="@drawable/bottom"
         android:layout_toStartOf="@+id/textViewGrade"
+        android:layout_toLeftOf="@+id/textViewGrade"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

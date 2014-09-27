@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  * Created by blendi on 9/25/2014.
  */
-public class SQLite {
+public class  SQLite {
 
     public static String KEY_ROWID = "_id";
     public static String KEY_DATE = "_date";

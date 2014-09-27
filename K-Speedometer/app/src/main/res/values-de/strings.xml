@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="Speed_time_info">Geschwindigkeit und Zeit</string>
+    <string name="btnClearHistory">Verlauf löschen</string>
+    <string name="btnHistory">Ansicht der Geschichte</string>
+    <string name="btnStart">Start</string>
+    <string name="date_info">Datum(tt/mm/jjjj)</string>
+    <string name="lat_info">Breite:</string>
+    <string name="loading_info">Daten werden geladen...</string>
+    <string name="long_info">Länge</string>
+    <string name="max_speed">Höchstgeschwindigkeit</string>
+    <string name="title_activity_balance">Balance</string>
+    <string name="title_activity_map">Landkarte</string>
+    <string name="no_gps">Kein GPS-Signal</string>
+    <string name="exeptionOff">Ausnahme Flash-Licht aus</string>
+    <string name="exeptionOn">Ausnahme Flash-Licht ein</string>
+    <string name="data_failed">Daten konnten nicht einfügen!</string>
+    <string name="data_registred_info">Daten in der Geschichte registriert</string>
+    <string name="error_info">Fehler</string>
+    <string name="speed_info">Geschwindigkeit:</string>
+    <string name="time_info">Zeit:</string>
+
+</resources>

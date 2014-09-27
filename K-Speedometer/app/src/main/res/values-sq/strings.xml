@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="Speed_time_info">Shpejtesia dhe koha</string>
+    <string name="btnClearHistory">Fshije historine</string>
+    <string name="btnHistory">Shiko historine</string>
+    <string name="btnStart">Fillo</string>
+    <string name="date_info">Data(dd/mm/vvvv)</string>
+    <string name="lat_info">Gjer:</string>
+    <string name="loading_info">Duke ngarkuar te dhena...</string>
+    <string name="long_info">Gjat:</string>
+    <string name="max_speed">Shpejtesia maksimale</string>
+    <string name="title_activity_balance">Balanci</string>
+    <string name="title_activity_map">Harta</string>
+    <string name="no_gps">Nuk ka GPS sinjal</string>
+    <string name="exeptionOff">Perjashtim drita off</string>
+    <string name="exeptionOn">Perjashtim drita on</string>
+    <string name="data_failed">Regjitrimi ne databaze deshtoti!</string>
+    <string name="data_registred_info">Te dhenat u regjistruan ne histori!</string>
+    <string name="error_info">Gabim!</string>
+    <string name="speed_info">Shpejtesia:</string>
+    <string name="time_info">Koha:</string>
+
+</resources>

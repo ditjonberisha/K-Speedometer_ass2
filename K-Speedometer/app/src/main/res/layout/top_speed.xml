@@ -21,14 +21,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.1"
-                android:text="Date(dd/mm/yyyy)" />
+                android:text="@string/date_info" />
 
             <TextView
                 android:id="@+id/txtSpeed"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="Maximun Speed" />
+                android:text="@string/max_speed" />
 
         </TableRow>
 
@@ -37,7 +37,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Loading Data..." />
+            android:text="@string/loading_info" />
 
     </TableLayout>
 
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Clear history" />
+        android:text="@string/btnClearHistory" />
 
 
 

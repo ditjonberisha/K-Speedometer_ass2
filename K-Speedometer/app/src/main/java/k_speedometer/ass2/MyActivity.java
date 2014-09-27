@@ -44,10 +44,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     // device sensor manager
     private SensorManager mSensorManager;
     TextView txtGrade, tvLat, tvLong;
-    SQLite objSQL;
     String provider;
     LocationManager locationM;
     Location location;
+    String gps,LightOn,LightOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +96,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         imgBalance.setOnClickListener(this);
         imgMap.setOnClickListener(this);
         StartCamera.setOnClickListener(this);
+
     }
 
 
@@ -122,9 +123,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     public void onLocationChanged(Location location) {
 
         if(location == null){
+            gps = getResources().getString(R.string.no_gps);
             speedometer.onSpeedChanged(0);
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("No GPS found!");
+            alert.setTitle(gps);
             alert.setPositiveButton("OK", null);
             alert.show();
         }
@@ -158,6 +160,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
      //Camera Flash Light Code
     public void flashLightOn(View view) {
 
+        LightOn = getResources().getString(R.string.exeptionOn);
         try {
             //check if there is a Camera Flash
             if (getPackageManager().hasSystemFeature(
@@ -170,12 +173,13 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Exception flashLightOn()",
+            Toast.makeText(getBaseContext(), LightOn,
                     Toast.LENGTH_SHORT).show();
         }
     }
 
     public void flashLightOff(View view) {
+        LightOff = getResources().getString(R.string.exeptionOff);
         try {
             if (getPackageManager().hasSystemFeature(
                     PackageManager.FEATURE_CAMERA_FLASH)) {
@@ -185,7 +189,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), "Exception flashLightOff",
+            Toast.makeText(getBaseContext(), LightOff,
                     Toast.LENGTH_SHORT).show();
         }
     }

@@ -17,14 +17,14 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="50"
-            android:text="Start"
+            android:text="@string/btnStart"
             android:textSize="21dp"/>
         <Button
             android:id="@+id/btnHistory"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="50"
-            android:text="View History"
+            android:text="@string/btnHistory"
             android:textSize="21dp"/>
     </LinearLayout>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -40,7 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="40"
-        android:text="Speed and time"
+        android:text="@string/Speed_time_info"
         android:textSize="21dp"
         android:padding="6dp"/>
 
