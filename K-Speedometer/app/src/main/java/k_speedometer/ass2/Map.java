@@ -61,7 +61,6 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         this.Init();
@@ -90,7 +89,6 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         speed_txt = getResources().getString(R.string.speed_info);
         time_txt = getResources().getString(R.string.time_info);
         switch (view.getId()) {
