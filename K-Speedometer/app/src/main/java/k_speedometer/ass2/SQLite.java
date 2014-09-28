@@ -10,7 +10,7 @@ import java.sql.SQLDataException;
 import java.sql.SQLException;
 
 /**
- * Created by blendi on 9/25/2014.
+ * Created by Blendi,Ditjon,Arnold.
  */
 public class  SQLite {
 
@@ -55,18 +55,20 @@ public class  SQLite {
     }
 
     public SQLite Open() throws SQLDataException {
-
+        //open connection with database
         myHelper = new DbHelper(myContext);
         myDatabase = myHelper.getWritableDatabase();
         return this;
     }
 
+    //close connection with database
     public void Close() {
         myHelper.close();
     }
 
     public long InsertData(String date, String speed,String time) throws SQLException {
 
+        //put data in contentValue than insert conventValue in table
         ContentValues cv = new ContentValues();
         cv.put(KEY_DATE, date);
         cv.put(KEY_MAXSPEED, speed);
@@ -85,6 +87,7 @@ public class  SQLite {
         int iTime = c.getColumnIndex(KEY_TIME);
         int i = 0;
         if (c != null) {
+            //get data from cursor one by one  from first to last row
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 i++;
                 data += "\n" + i+".  " + c.getString(iDate) + "                  " + c.getString(iSpeed)+

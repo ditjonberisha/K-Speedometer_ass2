@@ -75,11 +75,13 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         locationM = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationM.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        this.onLocationChanged(null);
+
         Criteria c=new Criteria();
-
         provider=locationM.getBestProvider(c, false);
-
         location=locationM.getLastKnownLocation(provider);
+
         if(location!=null)
         {
             //get latitude and longitude of the location
@@ -92,9 +94,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         }
         else
         {
-            tvLong.setText("n/a");
-            tvLat.setText("n/a");
-
             // alert dialog message
             gps = getResources().getString(R.string.no_gps);
             speedometer.onSpeedChanged(0);
@@ -102,11 +101,11 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             alert.setTitle(gps);
             alert.setPositiveButton("OK", null);
             alert.show();
+
+            tvLong.setText("n/a");
+            tvLat.setText("n/a");
         }
 
-        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        this.onLocationChanged(null);
         imgLight.setOnClickListener(this);
         imgBalance.setOnClickListener(this);
         imgMap.setOnClickListener(this);
@@ -172,13 +171,15 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         LightOn = getResources().getString(R.string.exeptionOn);
         try {
             //check if there is a Camera Flash
-            if (getPackageManager().hasSystemFeature(
-                    PackageManager.FEATURE_CAMERA_FLASH)) {
-                cam = Camera.open();//open camera access
+            if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
+                //open camera access
+                cam = Camera.open();
                 Camera.Parameters p = cam.getParameters();
-                p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//get torch
+                //get torch
+                p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                 cam.setParameters(p);
-                cam.startPreview();//start torch
+                //start torch
+                cam.startPreview();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -190,16 +191,15 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     public void flashLightOff(View view) {
         LightOff = getResources().getString(R.string.exeptionOff);
         try {
-            if (getPackageManager().hasSystemFeature(
-                    PackageManager.FEATURE_CAMERA_FLASH)) {
+            if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
                 cam.stopPreview();
-                cam.release();//Stop camera flash light
+                //Stop camera flash light
+                cam.release();
                 cam = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getBaseContext(), LightOff,
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), LightOff, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -209,27 +209,33 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         switch (view.getId()) {
 
             case R.id.imgLight:
-            if (!isFlashOn)//check if flash is Off
+                //check if flash is Off
+            if (!isFlashOn)
             {
-                flashLightOn(view);//turn it on
-                isFlashOn = true;//set variable true for On
-                imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));//change image background
+                //turn it on
+                flashLightOn(view);
+                //set variable true for On
+                isFlashOn = true;
+                //change image background
+                imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_on));
             } else {
                 flashLightOff(view);
                 isFlashOn = false;
                 imgLight.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_off));
             }break;
-            //end Camera Flash Light
+
             case R.id.imgBalance:
                 Intent i = new Intent("android.intent.action.BALANCE");
                 startActivity(i);
                 break;
+
             case R.id.imgCamera:
                 //start camera to take a picture
                 i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //start activity to get a result
                 startActivity(i);
                 break;
+
             case R.id.imgMap:
                 Intent i1 = new Intent("android.intent.action.MAP");
                 startActivity(i1);
@@ -260,6 +266,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         // get the angle around the z-axis rotated
         float degree = Math.round(event.values[0]);
 
+        //  0x00B0 =  " ° "
         txtGrade.setText(Float.toString(degree) + (char) 0x00B0);
 
         // create a rotation animation (reverse turn degree degrees)

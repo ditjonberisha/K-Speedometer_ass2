@@ -31,28 +31,46 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-
 public class Map extends Activity implements LocationListener, View.OnClickListener {
 
     private GoogleMap map;
-    private Button bStartStop, btnViewHistory;
+    private Button bStartStop;
+    private Button btnViewHistory;
     private TextView tvSpeedTime;
-    private String speed, time, timeToStore;
-    SQLite objSql;
-
+    private String speed;
+    private String time;
+    private String timeToStore;
+    private String speed_txt;
+    private String time_txt;
+    private String error;
+    private String done;
+    private String failed;
+    private int secs;
+    private int mins;
+    private int hrs;
     private long startTime = 0L;
-    long timeMSec = 0L;
-
+    private long timeMSec = 0L;
+    private float currentspeed;
+    private float maxSpeed;
+    SQLite objSql;
     private Handler handler = new Handler();
 
-    int secs, mins, hrs;
-    float currentspeed, maxSpeed;
-    private String speed_txt, time_txt, error, done, failed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        this.init();
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        this.onLocationChanged(null);
+        bStartStop.setOnClickListener(this);
+        btnViewHistory.setOnClickListener(this);
+    }
+
+    public void init() {
+
         speed_txt = getResources().getString(R.string.speed_info);
         time_txt = getResources().getString(R.string.time_info);
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -66,13 +84,6 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         speed = currentspeed + " km/h";
         time = "00:00:00";
         tvSpeedTime.setText(speed_txt + " " + speed + "\n" + time_txt + " " + time);
-
-        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        this.onLocationChanged(null);
-
-        bStartStop.setOnClickListener(this);
-        btnViewHistory.setOnClickListener(this);
     }
 
     @Override
@@ -132,20 +143,15 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     }
 
     @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
+    public void onStatusChanged(String s, int i, Bundle bundle) {    }
 
     @Override
-    public void onProviderEnabled(String s) {
-
-    }
+    public void onProviderEnabled(String s) {   }
 
     @Override
-    public void onProviderDisabled(String s) {
+    public void onProviderDisabled(String s) {   }
 
-    }
-
+    //check current speed if it is maximal one
     private void CompareSpeed(int speed) {
         if (speed > maxSpeed) {
             maxSpeed = speed;
@@ -154,19 +160,23 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     public void RegisterInData() {
 
+        //get text form string.xml
         done = getResources().getString(R.string.data_registred_info);
         failed = getResources().getString(R.string.data_failed);
         error = getResources().getString(R.string.error_info);
         objSql = new SQLite(this);
         try {
             objSql.Open();
+            //get today's date
             String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            //is speed is not 0 insert in database
             if (maxSpeed != 0) {
+                //convert float to string
                 String SpeedToInsert = String.valueOf(maxSpeed);
-                objSql.InsertData(date, SpeedToInsert,timeToStore);
+                objSql.InsertData(date, SpeedToInsert, timeToStore);
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore + "\n" + done);
-            }else{
+            } else {
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore);
             }
             alert.setTitle("Info!");
