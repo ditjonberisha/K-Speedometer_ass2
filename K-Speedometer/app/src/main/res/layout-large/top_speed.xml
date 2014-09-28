@@ -27,7 +27,6 @@
                 android:layout_weight="0.1"
                 android:text="@string/date_info" />
 
-
             <TextView
                 android:id="@+id/txtSpeed"
                 android:layout_width="fill_parent"
@@ -59,6 +58,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/btnClearHistory" />
-
 
 </LinearLayout>

@@ -153,5 +153,4 @@
         android:textSize="18sp"
         android:maxLength="10" />
 
-
 </RelativeLayout>

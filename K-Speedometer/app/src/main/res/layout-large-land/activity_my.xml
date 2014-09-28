@@ -152,5 +152,4 @@
         android:layout_alignRight="@+id/textViewlat"
         android:layout_alignEnd="@+id/textViewlat" />
 
-
 </RelativeLayout>

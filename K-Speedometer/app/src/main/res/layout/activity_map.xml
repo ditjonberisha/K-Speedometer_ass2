@@ -6,12 +6,14 @@
     tools:context="k_speedometer.ass2.Map"
     android:padding="3dp"
     android:weightSum="100">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
         android:layout_weight="45"
         android:weightSum="100" >
+
         <Button
             android:id="@+id/bStartStop"
             android:layout_width="fill_parent"
@@ -19,6 +21,7 @@
             android:layout_weight="50"
             android:text="@string/btnStart"
             android:textSize="21dp"/>
+
         <Button
             android:id="@+id/btnHistory"
             android:layout_width="fill_parent"
@@ -27,6 +30,7 @@
             android:text="@string/btnHistory"
             android:textSize="21dp"/>
     </LinearLayout>
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
         android:layout_width="match_parent"
