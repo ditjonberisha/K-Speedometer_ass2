@@ -12,12 +12,12 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by Ditjon on 9/23/2014.
+ * Created by Ditjon, Arnold, Blendi
  */
-// https://github.com/bilthon/Android-Speedometer/blob/master/src/com/luminiasoft/labs/views/Speedometer.java
+//The most part from https://github.com/bilthon/Android-Speedometer/blob/master/src/com/luminiasoft/labs/views/Speedometer.java
 public class Speedometer extends View implements SpeedChangeListener {
 
-    public static final float DEFAULT_MAX_SPEED = 220;
+    public static final float DEFAULT_MAX_SPEED = 220; //max speed
 
     // Speedometer internal state
     private float mMaxSpeed;
@@ -35,16 +35,13 @@ public class Speedometer extends View implements SpeedChangeListener {
     final RectF oval = new RectF();
 
     // Drawing colors
-    // ngjyra kur mbushet
     private int ON_COLOR = Color.argb(255, 255, 4, 0);
-    // ngjyra pa u mush
     private int OFF_COLOR = Color.argb(255,100,0,0);
-    // Ngjyra e numrave
-    private int SCALE_COLOR = Color.argb(255, 255, 255, 255);
-    // Madhesia e numrave
-    private float SCALE_SIZE = 18;
-
     private int Blue = Color.argb(255,0,0,240);
+    // Color of number
+    private int SCALE_COLOR = Color.argb(255, 255, 255, 255);
+    // Size of number
+    private float SCALE_SIZE = 18;
 
     // Scale configuration
     private float centerX;
@@ -85,7 +82,6 @@ public class Speedometer extends View implements SpeedChangeListener {
         scalePaint.setTextSize(SCALE_SIZE);
         scalePaint.setColor(SCALE_COLOR);
 
-        // shpejtesia ne mes
         readingPaint = new Paint(scalePaint);
         readingPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         readingPaint.setTextSize(80);
@@ -100,10 +96,6 @@ public class Speedometer extends View implements SpeedChangeListener {
         onPath = new Path();
         offPath = new Path();
         BluePath = new Path();
-    }
-
-    public float getCurrentSpeed() {
-        return mCurrentSpeed;
     }
 
     public void setCurrentSpeed(float mCurrentSpeed) {
@@ -160,10 +152,6 @@ public class Speedometer extends View implements SpeedChangeListener {
         drawbluecircle(canvas);
     }
 
-    /**
-     * Draws the segments in their OFF state
-     * canvas
-     */
     private void drawScaleBackground(Canvas canvas){
         canvas.drawARGB(255, 0, 0, 0);
         offPath.reset();

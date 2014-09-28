@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener, SensorEventListener {
 
-    Speedometer speedometer;
+    private Speedometer speedometer;
     private ImageButton imgLight;
     private ImageButton imgBalance;
     private ImageButton imgMap;
@@ -49,7 +49,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     private TextView txtGrade;
     private TextView tvLat;
     private TextView tvLong;
-    private TextView tvCity;
     private LocationManager locationM;
     private Location location;
     private String provider;
@@ -71,7 +70,6 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
         StartCamera = (ImageButton) findViewById(R.id.imgCamera);
         tvLat = (TextView) findViewById(R.id.textViewlat);
         tvLong = (TextView) findViewById(R.id.textViewlong);
-        tvCity = (TextView) findViewById(R.id.textViewCity);
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -97,6 +95,7 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             tvLong.setText("n/a");
             tvLat.setText("n/a");
 
+            // alert dialog message
             gps = getResources().getString(R.string.no_gps);
             speedometer.onSpeedChanged(0);
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -142,22 +141,10 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
             double lat=location.getLatitude();
             tvLong.setText(""+lng);
             tvLat.setText(""+lat);
-
-            try {
-                // get name of the city
-                Geocoder gcd = new Geocoder(this, Locale.getDefault());
-                List<Address> addresses = null;
-                addresses = gcd.getFromLocation(lat, lng, 1);
-                if (addresses.size() > 0) {
-                    tvCity.setText(addresses.get(0).getLocality());
-                } else
-                    tvCity.setText("City not found");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            // convert currentspeed on km/h
             float currentspeed = location.getSpeed() * 36/10;
             speedometer.onSpeedChanged(currentspeed);
+
         }else{
             tvLong.setText("n/a");
             tvLat.setText("n/a");

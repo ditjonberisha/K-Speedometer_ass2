@@ -152,14 +152,5 @@
         android:layout_alignRight="@+id/textViewlat"
         android:layout_alignEnd="@+id/textViewlat" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewCity"
-        android:layout_alignBottom="@+id/imageViewCompass"
-        android:layout_toRightOf="@+id/imageViewCompass"
-        android:layout_toEndOf="@+id/imageViewCompass"
-        android:textColor="#ffffff"
-        android:textSize="50sp" />
 
 </RelativeLayout>
