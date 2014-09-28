@@ -19,12 +19,12 @@ import android.view.SurfaceView;
 public class Balance extends Activity implements SensorEventListener {
 
     //Declaration of variables for the entire class
-    private float centerX;
-    private float centerY;
-    private float sensorX;
-    private float sensorY;
-    private int nrPixels;
-    private int range;
+    public float centerX;
+    public float centerY;
+    public float sensorX;
+    public float sensorY;
+    public int nrPixels;
+    public int range;
     private Bitmap Ball;
     private Bitmap gPlus;
     private MyBringBackSurface ourSurfaceHolder;
@@ -122,7 +122,7 @@ public class Balance extends Activity implements SensorEventListener {
     }
 
     //Checks if the ball is at the center of the screen
-    private boolean checkBalance() {
+    public boolean checkBalance() {
         if ((centerX + sensorX * nrPixels >= centerX && centerX + sensorX * nrPixels <= centerX + range
                 || centerX + sensorX * nrPixels <= centerX && centerX + sensorX * nrPixels >= centerX - range)
                 && (centerY + sensorY * nrPixels >= centerY && centerY + sensorY * nrPixels <= centerY + range

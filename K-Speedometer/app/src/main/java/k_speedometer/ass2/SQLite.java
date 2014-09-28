@@ -1,5 +1,6 @@
 package k_speedometer.ass2;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 /*
     Created by Arnold, Ditjon and Blend
  */
-public class  SQLite {
+public class  SQLite extends Activity{
 
     public static String KEY_ROWID = "_id";
     public static String KEY_DATE = "_date";
@@ -23,13 +24,12 @@ public class  SQLite {
     private static final int DB_VERSION = 1;
 
     private DbHelper myHelper;
-    private final Context myContext;
+    private Context myContext;
     private SQLiteDatabase myDatabase;
-
+    public SQLite(){}
     public SQLite(Context c) {
         myContext = c;
     }
-
 
     private static class DbHelper extends SQLiteOpenHelper {
 
