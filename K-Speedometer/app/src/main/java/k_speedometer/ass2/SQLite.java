@@ -9,8 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 
-/**
- * Created by Blendi,Ditjon,Arnold.
+/*
+    Created by Arnold, Ditjon and Blend
  */
 public class  SQLite {
 

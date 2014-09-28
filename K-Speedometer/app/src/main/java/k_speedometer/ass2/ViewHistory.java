@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.sql.SQLException;
 
-/**
- * Created by Blendi on 9/25/2014.
+/*
+    Created by Arnold, Ditjon and Blend
  */
 public class ViewHistory extends Activity implements View.OnClickListener {
     private TextView data;

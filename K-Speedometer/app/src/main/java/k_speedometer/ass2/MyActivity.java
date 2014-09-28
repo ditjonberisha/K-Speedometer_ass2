@@ -32,7 +32,9 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
+/*
+    Created by Arnold, Ditjon and Blend
+ */
 
 public class MyActivity extends Activity implements LocationListener,View.OnClickListener, SensorEventListener {
 

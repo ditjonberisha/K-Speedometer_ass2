@@ -10,11 +10,12 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-
-/**
- * Created by Ditjon, Arnold, Blendi
+/*
+    Created by Arnold, Ditjon and Blend
  */
+
 //The most part from https://github.com/bilthon/Android-Speedometer/blob/master/src/com/luminiasoft/labs/views/Speedometer.java
+
 public class Speedometer extends View implements SpeedChangeListener {
 
     public static final float DEFAULT_MAX_SPEED = 220; //max speed

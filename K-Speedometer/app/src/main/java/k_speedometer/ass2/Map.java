@@ -29,10 +29,13 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/*
+    Created by Arnold, Ditjon and Blend
+ */
 
 public class Map extends Activity implements LocationListener, View.OnClickListener {
 
+    //Declaration of variables
     private GoogleMap map;
     private Button bStartStop;
     private Button btnViewHistory;
@@ -61,7 +64,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        this.init();
+        this.Init();
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         this.onLocationChanged(null);
@@ -69,8 +72,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         btnViewHistory.setOnClickListener(this);
     }
 
-    public void init() {
-
+    public void Init() {
         speed_txt = getResources().getString(R.string.speed_info);
         time_txt = getResources().getString(R.string.time_info);
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -95,9 +97,10 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
             case R.id.bStartStop:
                 if (bStartStop.getText().toString().equals("Start")) {
                     bStartStop.setText("Stop");
-                    startTime = SystemClock.uptimeMillis();
-                    handler.postDelayed(updateTimer, 0);
+                    startTime = SystemClock.uptimeMillis(); // Gets the system's current time
+                    handler.postDelayed(updateTimer, 0); //Starts the thread for the timer
                 } else {
+                    //When the timer stops, time and speed will be set equal to zero
                     timeToStore = time;
                     bStartStop.setText("Start");
                     secs = mins = hrs = 0;
@@ -105,8 +108,8 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
                     currentspeed = 0;
                     speed = currentspeed + " km/h";
                     tvSpeedTime.setText(speed_txt + " " + speed + "\n" + time_txt + " " + time);
-                    handler.removeCallbacks(updateTimer);
-                    RegisterInData();
+                    handler.removeCallbacks(updateTimer); //Stops the thread for the timer
+                    RegisterInData(); //Registers the data to the database
                 }
                 break;
             case R.id.btnHistory:
@@ -120,8 +123,9 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
         public void run() {
 
-            timeMSec = SystemClock.uptimeMillis() - startTime;
+            timeMSec = SystemClock.uptimeMillis() - startTime; //Gets the time since the timer has started
 
+            //Gets the seconds, minutes, and hours
             secs = (int) (timeMSec / 1000);
             mins = secs / 60;
             hrs = secs / 3600;
@@ -151,7 +155,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     @Override
     public void onProviderDisabled(String s) {   }
 
-    //check current speed if it is maximal one
+    //Check if the current speed is greater than the maximal speed registered
     private void CompareSpeed(int speed) {
         if (speed > maxSpeed) {
             maxSpeed = speed;
@@ -160,19 +164,19 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
 
     public void RegisterInData() {
 
-        //get text form string.xml
+        //Get text form string.xml
         done = getResources().getString(R.string.data_registred_info);
         failed = getResources().getString(R.string.data_failed);
         error = getResources().getString(R.string.error_info);
         objSql = new SQLite(this);
         try {
             objSql.Open();
-            //get today's date
+            //Get today's date
             String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            //is speed is not 0 insert in database
+            //Is speed is not 0 insert in database
             if (maxSpeed != 0) {
-                //convert float to string
+                //Convert float to string
                 String SpeedToInsert = String.valueOf(maxSpeed);
                 objSql.InsertData(date, SpeedToInsert, timeToStore);
                 alert.setMessage("Max. " + speed_txt + " " + maxSpeed + "km/h\n" + time_txt + " " + timeToStore + "\n" + done);
