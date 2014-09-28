@@ -21,5 +21,6 @@
     <string name="error_info">Fehler</string>
     <string name="speed_info">Geschwindigkeit:</string>
     <string name="time_info">Zeit:</string>
+    <string name="time_to_DB">Zeit</string>
 
 </resources>
