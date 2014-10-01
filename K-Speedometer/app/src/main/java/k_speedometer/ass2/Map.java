@@ -1,5 +1,6 @@
 package k_speedometer.ass2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -151,6 +152,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
         }
     }
 
+    @SuppressLint("all")
     public void RegisterInData() {
 
         //Get text form string.xml

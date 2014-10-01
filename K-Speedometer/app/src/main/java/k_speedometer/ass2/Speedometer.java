@@ -1,5 +1,6 @@
 package k_speedometer.ass2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -197,6 +198,7 @@ public class Speedometer extends View implements SpeedChangeListener {
         canvas.restore();
     }
 
+    @SuppressLint("all")
     private void drawReading(Canvas canvas){
         Path path = new Path();
         String message = String.format("%d", (int)this.mCurrentSpeed);
