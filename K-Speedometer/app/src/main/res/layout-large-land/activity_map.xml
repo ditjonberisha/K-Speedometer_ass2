@@ -5,12 +5,14 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
         android:layout_weight="45"
         android:weightSum="100" >
 
+        <!--suppress NestedWeights-->
         <Button
             android:id="@+id/bStartStop"
             android:layout_width="fill_parent"
