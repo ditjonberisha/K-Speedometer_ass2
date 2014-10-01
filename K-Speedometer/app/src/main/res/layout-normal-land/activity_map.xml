@@ -21,12 +21,12 @@
             android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="65" />
+            android:layout_weight="70" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_weight="35"
+            android:layout_weight="30"
             android:orientation="vertical"
             android:weightSum="100">
 
