@@ -34,8 +34,8 @@ public class MyActivity extends Activity implements LocationListener,View.OnClic
     private ImageButton imgBalance;
     private ImageButton imgMap;
     private ImageButton StartCamera;
-    boolean isFlashOn = false;//to check if light is on or off.
-    public static Camera cam = null;
+    private boolean isFlashOn = false;//to check if light is on or off.
+    private static Camera cam = null;
     private ImageView compass;
     private float currentDegree = 0f; // record the compass picture angle turned
     private SensorManager mSensorManager;

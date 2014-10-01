@@ -14,10 +14,10 @@ import java.sql.SQLException;
  */
 public class  SQLite extends Activity{
 
-    public static String KEY_ROWID = "_id";
-    public static String KEY_DATE = "_date";
-    public static String KEY_MAXSPEED = "_maxSpeed";
-    public static String KEY_TIME = "_time";
+    private static String KEY_ROWID = "_id";
+    private static String KEY_DATE = "_date";
+    private static String KEY_MAXSPEED = "_maxSpeed";
+    private static String KEY_TIME = "_time";
 
     private static final String DB_NAME = "History";
     private static final String TBL_NAME = "MaxSpeed";
@@ -26,7 +26,6 @@ public class  SQLite extends Activity{
     private DbHelper myHelper;
     private Context myContext;
     private SQLiteDatabase myDatabase;
-    public SQLite(){}
     public SQLite(Context c) {
         myContext = c;
     }

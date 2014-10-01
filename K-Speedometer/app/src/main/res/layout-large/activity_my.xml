@@ -23,7 +23,7 @@
         android:background="@drawable/ic_light_off"
         android:maxHeight="70dp"
         android:maxWidth="70dp"
-        android:contentDescription="Light" />
+        android:contentDescription="@string/c_light" />
 
     <ImageView
         android:layout_width="320dp"

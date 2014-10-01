@@ -19,8 +19,8 @@ import android.view.SurfaceView;
 public class Balance extends Activity implements SensorEventListener {
 
     //Declaration of variables for the entire class
-    public float centerX;
-    public float centerY;
+    private float centerX;
+    private float centerY;
     public float sensorX;
     public float sensorY;
     public int nrPixels;

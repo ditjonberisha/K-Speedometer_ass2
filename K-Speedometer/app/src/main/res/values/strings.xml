@@ -26,5 +26,14 @@
     <string name="time_to_DB">Time</string>
     <string name="zero_value">0</string>
     <string name="not_available">n/a</string>
+    <string name="c_light">Light</string>
+    <string name="c_comapss">Compass</string>
+    <string name="c_comapss1">Compass1</string>
+    <string name="c_camera">Camera</string>
+    <string name="c_location">Location</string>
+    <string name="c_balance">Balance</string>
+
+
+
 
 </resources>

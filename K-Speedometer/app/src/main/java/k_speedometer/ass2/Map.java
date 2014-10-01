@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 /*
     Created by Arnold, Ditjon and Blend
  */
@@ -45,7 +46,7 @@ public class Map extends Activity implements LocationListener, View.OnClickListe
     private long timeMSec = 0L;
     private float currentspeed;
     private float maxSpeed;
-    SQLite objSql;
+    SQLite  objSql;
     private Handler handler = new Handler();
 
 
