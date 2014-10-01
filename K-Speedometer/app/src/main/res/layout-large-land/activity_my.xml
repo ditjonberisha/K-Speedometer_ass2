@@ -22,7 +22,8 @@
         android:maxWidth="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:contentDescription="Light" />
 
     <ImageView
         android:layout_width="250dp"
@@ -31,7 +32,8 @@
         android:src="@drawable/compass"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/Speedometer"
-        android:layout_toEndOf="@+id/Speedometer" />
+        android:layout_toEndOf="@+id/Speedometer"
+        android:contentDescription="Compass" />
 
     <ImageView
         android:layout_width="250dp"
@@ -40,7 +42,8 @@
         android:src="@drawable/compass1"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/Speedometer"
-        android:layout_toEndOf="@+id/Speedometer" />
+        android:layout_toEndOf="@+id/Speedometer"
+        android:contentDescription="Compass1" />
 
     <TextView
         android:layout_width="80dp"
@@ -96,7 +99,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/camera" />
+        android:background="@drawable/camera"
+        android:contentDescription="Camera" />
 
     <ImageButton
         android:layout_width="320dp"
@@ -106,7 +110,8 @@
         android:layout_toRightOf="@+id/imgCamera"
         android:layout_toEndOf="@+id/imgCamera"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/map"/>
+        android:background="@drawable/map"
+        android:contentDescription="Location" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -118,7 +123,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/imgMap"
-        android:layout_alignTop="@+id/imageView" />
+        android:layout_alignTop="@+id/imageView"
+        android:contentDescription="Balance" />
 
     <TextView
         android:layout_width="wrap_content"
