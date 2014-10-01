@@ -10,10 +10,11 @@
     <string name="Speed_time_info">Speed and time</string>
     <string name="lat_info">Lat:</string>
     <string name="long_info">Long:</string>
+    <string name="id_db">Id</string>
     <string name="date_info">Date(dd/mm/yyyy)</string>
     <string name="max_speed">Maximum Speed</string>
     <string name="btnClearHistory">Clear history</string>
-    <string name="loading_info">Loading Data...</string>
+    <string name="loading_info">Loading Data(…, &#8230;)</string>
     <string name="no_gps">No GPS signal</string>
     <string name="exeptionOn">Exception flashLightOn</string>
     <string name="exeptionOff">Exception flashLightOff</string>
@@ -23,5 +24,7 @@
     <string name="error_info">Error!</string>
     <string name="data_failed">Failed to insert data!</string>
     <string name="time_to_DB">Time</string>
+    <string name="zero_value">0</string>
+    <string name="not_available">n/a</string>
 
 </resources>

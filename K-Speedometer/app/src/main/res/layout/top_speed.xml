@@ -15,7 +15,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="0.05"
-                android:text="Id" />
+                android:text="@string/id_db" />
             <TextView
                 android:id="@+id/txtDate"
                 android:layout_width="fill_parent"

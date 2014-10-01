@@ -8,8 +8,9 @@
     <string name="btnStart">Fillo</string>
     <string name="date_info">Data(dd/mm/vvvv)</string>
     <string name="lat_info">Gjer:</string>
-    <string name="loading_info">Duke ngarkuar te dhena...</string>
+    <string name="loading_info">Duke ngarkuar te dhena(…, &#8230;) ?</string>
     <string name="long_info">Gjat:</string>
+    <string name="id_db">Id</string>
     <string name="max_speed">Shpejtesia maksimale</string>
     <string name="title_activity_balance">Balanci</string>
     <string name="title_activity_map">Harta</string>
@@ -21,5 +22,8 @@
     <string name="error_info">Gabim!</string>
     <string name="speed_info">Shpejtesia:</string>
     <string name="time_info">Koha:</string>
+    <string name="time_to_DB">Koha</string>
+    <string name="zero_value">0</string>
+    <string name="not_available">n/a</string>
 
 </resources>

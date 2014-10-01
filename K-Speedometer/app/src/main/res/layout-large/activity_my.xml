@@ -90,7 +90,7 @@
     <TextView
         android:layout_width="120dp"
         android:layout_height="100dp"
-        android:text="0"
+        android:text="@string/zero_value"
         android:gravity="center"
         android:id="@+id/textViewGrade"
         android:textSize="40sp"
@@ -125,7 +125,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="n/a"
+        android:text="@string/not_available"
         android:id="@+id/textViewlat"
         android:layout_above="@+id/textView2"
         android:layout_alignRight="@+id/imgBalance"
@@ -137,7 +137,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="n/a"
+        android:text="@string/not_available"
         android:id="@+id/textViewlong"
         android:layout_below="@+id/textViewlat"
         android:layout_alignParentRight="true"
