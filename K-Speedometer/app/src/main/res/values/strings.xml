@@ -2,8 +2,6 @@
 <resources>
 
     <string name="app_name">K-Speedometer</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_map">Map</string>
     <string name="title_activity_balance">Balance</string>
     <string name="btnStart">Start</string>
     <string name="btnHistory">View History</string>

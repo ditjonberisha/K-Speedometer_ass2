@@ -8,6 +8,7 @@
     android:weightSum="100">
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
@@ -16,6 +17,7 @@
 
         <!--suppress NestedWeights-->
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/bStartStop"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -24,6 +26,7 @@
             android:textSize="21sp"/>
 
         <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/btnHistory"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
