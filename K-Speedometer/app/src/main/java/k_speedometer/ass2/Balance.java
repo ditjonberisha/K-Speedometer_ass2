@@ -50,6 +50,7 @@ public class Balance extends Activity implements SensorEventListener {
         //If the activity pauses this method stops the thread
         public void pause() {
             isRunning = false;
+            //noinspection LoopStatementThatDoesntLoop
             while (true) {
                 try {
                     ourThread.join();

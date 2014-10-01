@@ -8,8 +8,9 @@
     <string name="btnStart">Start</string>
     <string name="date_info">Datum(tt/mm/jjjj)</string>
     <string name="lat_info">Breite:</string>
-    <string name="loading_info">Daten werden geladen...</string>
+    <string name="loading_info">Daten werden geladen(…, &#8230;)</string>
     <string name="long_info">Länge</string>
+    <string name="id_db">Id</string>
     <string name="max_speed">Höchstgeschwindigkeit</string>
     <string name="title_activity_balance">Balance</string>
     <string name="title_activity_map">Landkarte</string>
@@ -21,5 +22,8 @@
     <string name="error_info">Fehler</string>
     <string name="speed_info">Geschwindigkeit:</string>
     <string name="time_info">Zeit:</string>
+    <string name="time_to_DB">Zeit</string>
+    <string name="zero_value">0</string>
+    <string name="not_available">n/a</string>
 
 </resources>
