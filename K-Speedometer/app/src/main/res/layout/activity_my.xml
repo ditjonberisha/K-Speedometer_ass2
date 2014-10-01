@@ -27,7 +27,8 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_light_off"
         android:maxHeight="70dp"
-        android:maxWidth="70dp" />
+        android:maxWidth="70dp"
+        android:contentDescription="Light" />
 
     <ImageView
         android:layout_width="190dp"
@@ -36,7 +37,8 @@
         android:layout_below="@+id/Speedometer"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/compass" />
+        android:src="@drawable/compass"
+        android:contentDescription="Compass" />
 
     <ImageView
         android:layout_width="190dp"
@@ -48,7 +50,8 @@
         android:src="@drawable/compass1"
         android:layout_alignBottom="@+id/imageViewCompass"
         android:layout_alignRight="@+id/imageViewCompass"
-        android:layout_alignEnd="@+id/imageViewCompass" />
+        android:layout_alignEnd="@+id/imageViewCompass"
+        android:contentDescription="Compass1" />
 
     <TextView
         android:layout_width="80dp"
@@ -104,7 +107,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/camera" />
+        android:background="@drawable/camera"
+        android:contentDescription="Camera" />
 
     <ImageButton
         android:layout_width="120dp"
@@ -114,7 +118,8 @@
         android:layout_toRightOf="@+id/imgCamera"
         android:layout_toEndOf="@+id/imgCamera"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/map"/>
+        android:background="@drawable/map"
+        android:contentDescription="Location" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -126,7 +131,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/balance" />
+        android:background="@drawable/balance"
+        android:contentDescription="Balance" />
 
     <TextView
         android:layout_width="wrap_content"

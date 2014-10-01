@@ -22,7 +22,8 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/ic_light_off"
         android:maxHeight="70dp"
-        android:maxWidth="70dp" />
+        android:maxWidth="70dp"
+        android:contentDescription="Light" />
 
     <ImageView
         android:layout_width="320dp"
