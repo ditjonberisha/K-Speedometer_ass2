@@ -155,7 +155,6 @@ public class Speedometer extends View implements SpeedChangeListener {
     }
 
     private void drawScaleBackground(Canvas canvas){
-        canvas.drawARGB(255, 0, 0, 0);
         offPath.reset();
         for(int i = -180; i <= 0; i+=3){
             offPath.addArc(oval, i, 2);

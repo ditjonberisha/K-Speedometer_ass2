@@ -44,7 +44,7 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="50"
                 android:text="@string/btnHistory"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
