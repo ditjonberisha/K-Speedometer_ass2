@@ -17,7 +17,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="50"
             android:text="@string/btnStart"
-            android:textSize="21dp"/>
+            android:textSize="21sp"/>
 
         <Button
             android:id="@+id/btnHistory"
@@ -25,7 +25,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="50"
             android:text="@string/btnHistory"
-            android:textSize="21dp"/>
+            android:textSize="21sp"/>
     </LinearLayout>
 
     <fragment
@@ -42,7 +42,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="40"
         android:text="@string/Speed_time_info"
-        android:textSize="21dp"
+        android:textSize="21sp"
         android:padding="6dp"/>
 
 </LinearLayout>
