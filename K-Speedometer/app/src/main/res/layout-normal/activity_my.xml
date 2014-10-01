@@ -23,7 +23,7 @@
         android:background="@drawable/ic_light_off"
         android:maxHeight="70dp"
         android:maxWidth="70dp"
-        android:contentDescription="Light" />
+        android:contentDescription="@string/c_light" />
 
     <ImageView
         android:layout_width="190dp"
@@ -33,7 +33,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:src="@drawable/compass"
-        android:contentDescription="Compass" />
+        android:contentDescription="@string/c_comapss" />
 
     <ImageView
         android:layout_width="190dp"
@@ -46,7 +46,7 @@
         android:layout_alignBottom="@+id/imageViewCompass"
         android:layout_alignRight="@+id/imageViewCompass"
         android:layout_alignEnd="@+id/imageViewCompass"
-        android:contentDescription="Compass1" />
+        android:contentDescription="@string/c_comapss1" />
 
     <TextView
         android:layout_width="80dp"
@@ -103,7 +103,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/camera"
-        android:contentDescription="Camera" />
+        android:contentDescription="@string/c_camera" />
 
     <ImageButton
         android:layout_width="120dp"
@@ -114,7 +114,7 @@
         android:layout_toEndOf="@+id/imgCamera"
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/map"
-        android:contentDescription="Location" />
+        android:contentDescription="@string/c_camera" />
 
     <ImageButton
         android:layout_width="120dp"
@@ -127,7 +127,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/balance"
-        android:contentDescription="Balance" />
+        android:contentDescription="@string/c_balance" />
 
     <TextView
         android:layout_width="wrap_content"

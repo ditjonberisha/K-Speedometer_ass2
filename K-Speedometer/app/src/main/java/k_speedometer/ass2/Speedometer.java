@@ -18,7 +18,7 @@ import android.view.View;
 
 public class Speedometer extends View implements SpeedChangeListener {
 
-    public static final float DEFAULT_MAX_SPEED = 220; //max speed
+    private static final float DEFAULT_MAX_SPEED = 220; //max speed
 
     // Speedometer internal state
     private float mMaxSpeed;
@@ -33,7 +33,7 @@ public class Speedometer extends View implements SpeedChangeListener {
     private Path BluePath;
     private Path onPath;
     private Path offPath;
-    final RectF oval = new RectF();
+    private final RectF oval = new RectF();
 
     // Drawing colors
     private int ON_COLOR = Color.argb(255, 255, 4, 0);

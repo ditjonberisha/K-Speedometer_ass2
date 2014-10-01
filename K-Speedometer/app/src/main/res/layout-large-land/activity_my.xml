@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:contentDescription="Light" />
+        android:contentDescription="@string/c_light" />
 
     <ImageView
         android:layout_width="250dp"
@@ -33,7 +33,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/Speedometer"
         android:layout_toEndOf="@+id/Speedometer"
-        android:contentDescription="Compass" />
+        android:contentDescription="@string/c_camera" />
 
     <ImageView
         android:layout_width="250dp"
@@ -43,7 +43,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/Speedometer"
         android:layout_toEndOf="@+id/Speedometer"
-        android:contentDescription="Compass1" />
+        android:contentDescription="@string/c_comapss1" />
 
     <TextView
         android:layout_width="80dp"
@@ -100,7 +100,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/camera"
-        android:contentDescription="Camera" />
+        android:contentDescription="@string/c_camera" />
 
     <ImageButton
         android:layout_width="320dp"
@@ -111,7 +111,7 @@
         android:layout_toEndOf="@+id/imgCamera"
         android:layout_alignTop="@+id/imageView"
         android:background="@drawable/map"
-        android:contentDescription="Location" />
+        android:contentDescription="@string/c_location" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/imgMap"
         android:layout_alignTop="@+id/imageView"
-        android:contentDescription="Balance" />
+        android:contentDescription="@string/c_balance" />
 
     <TextView
         android:layout_width="wrap_content"
