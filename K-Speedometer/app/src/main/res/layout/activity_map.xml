@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context="k_speedometer.ass2.Map"
     android:padding="3dp"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:background="#ffffff">
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
